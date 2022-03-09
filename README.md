@@ -58,14 +58,15 @@ optional arguments:
   --batch BATCH         Batch size.
   --early-stop EARLY_STOP
                         Epoch before early stop.
-  --device DEVICE
+  --device DEVICE		cuda or cpu. Default: cuda
   --name NAME           A name for different runs.
   --update UPDATE       Gradient accumulate steps
   --warmup WARMUP       Warmup steps.
-  --contrast CONTRAST   Whether use contrastive model.
-  --graph GRAPH         Whether use graph encoder.
+  --contrast CONTRAST   Whether use contrastive model. Default: True
+  --graph GRAPH         Whether use graph encoder. Default: True
   --layer LAYER         Layer of Graphormer.
-  --multi               Whether the task is multi-label classification.
+  --multi               Whether the task is multi-label classification. Should keep default since all 
+  						datasets are multi-label classifications. Default: True
   --lamb LAMB           lambda
   --thre THRE           Threshold for keeping tokens. Denote as gamma in the paper.
   --tau TAU             Temperature for contrastive model.
@@ -75,6 +76,12 @@ optional arguments:
 
 Checkpoints are in `./checkpoints/DATA-NAME`. Two checkpoints are kept based on macro-F1 and micro-F1 respectively 
 (`checkpoint_best_macro.pt`, `checkpoint_best_micro.pt`).
+
+e.g. Train on `WebOfScience` with `batch=12, lambda=0.1, gamma=0.02`. Checkpoints will be in `checkpoints/WebOfScience-test/`.
+
+```shell
+python train.py --name test --batch 12 --data WebOfScience --lambda 0.1 --thre 0.02
+```
 
 ## Test
 
@@ -87,7 +94,29 @@ optional arguments:
   --batch BATCH         Batch size.
   --name NAME           Name of checkpoint. Commonly as DATA-NAME.
   --extra {_macro,_micro}
-                        An extra string in the name of checkpoint.
+                        An extra string in the name of checkpoint. Default: _macro
 ```
 
 Use `--extra _macro` or `--extra _micro`  to choose from using `checkpoint_best_macro.pt` or`checkpoint_best_micro.pt` respectively.
+
+e.g. Test on previous example.
+
+```shell
+python test.py --name WebOfScience-test
+```
+
+## Citation
+
+Please cite our paper.
+
+```
+@article{wang2022incorporating,
+  title={Incorporating Hierarchy into Text Encoder: a Contrastive Learning Approach for Hierarchical Text Classification},
+  author={Zihan Wang, Peiyi Wang, Lianzhe Huang, Xin Sun, Houfeng Wang},
+  journal={arXiv preprint arXiv:2203.03825},
+  url={https://arxiv.org/abs/2203.03825},
+  year={2022}
+}
+```
+
+The ACL version will soon be available.
