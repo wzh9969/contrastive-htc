@@ -19,6 +19,7 @@ if __name__ == '__main__':
     checkpoint = torch.load(os.path.join('checkpoints', args.name, 'checkpoint_best{}.pt'.format(args.extra)),
                             map_location='cpu')
     batch_size = args.batch
+    device = args.device
     extra = args.extra
     args = checkpoint['args'] if checkpoint['args'] is not None else args
     data_path = os.path.join('data', args.data)
@@ -32,7 +33,7 @@ if __name__ == '__main__':
     label_dict = {i: tokenizer.decode(v, skip_special_tokens=True) for i, v in label_dict.items()}
     num_class = len(label_dict)
 
-    dataset = BertDataset(device='cuda', pad_idx=tokenizer.pad_token_id, data_path=data_path)
+    dataset = BertDataset(device=device, pad_idx=tokenizer.pad_token_id, data_path=data_path)
     model = ContrastModel.from_pretrained('bert-base-uncased', num_labels=num_class,
                                           contrast_loss=args.contrast, graph=args.graph,
                                           layer=args.layer, data_path=data_path, multi_label=args.multi,

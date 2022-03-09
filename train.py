@@ -73,7 +73,7 @@ parser.add_argument('--warmup', default=2000, type=int, help='Warmup steps.')
 parser.add_argument('--contrast', default=1, type=int, help='Whether use contrastive model.')
 parser.add_argument('--graph', default=1, type=int, help='Whether use graph encoder.')
 parser.add_argument('--layer', default=1, type=int, help='Layer of Graphormer.')
-parser.add_argument('--multi', default=True, action='store_true', help='Whether the task is multi-label classification.')
+parser.add_argument('--multi', default=True, action='store_false', help='Whether the task is multi-label classification.')
 parser.add_argument('--lamb', default=1, type=float, help='lambda')
 parser.add_argument('--thre', default=0.02, type=float, help='Threshold for keeping tokens. Denote as gamma in the paper.')
 parser.add_argument('--tau', default=1, type=float, help='Temperature for contrastive model.')
@@ -92,6 +92,7 @@ def get_root(path_dict, n):
 
 if __name__ == '__main__':
     args = parser.parse_args()
+    device = args.device
     print(args)
     if args.wandb:
         import wandb
@@ -104,7 +105,7 @@ if __name__ == '__main__':
     label_dict = {i: tokenizer.decode(v, skip_special_tokens=True) for i, v in label_dict.items()}
     num_class = len(label_dict)
 
-    dataset = BertDataset(device='cuda', pad_idx=tokenizer.pad_token_id, data_path=data_path)
+    dataset = BertDataset(device=device, pad_idx=tokenizer.pad_token_id, data_path=data_path)
     model = ContrastModel.from_pretrained('bert-base-uncased', num_labels=num_class,
                                           contrast_loss=args.contrast, graph=args.graph,
                                           layer=args.layer, data_path=data_path, multi_label=args.multi,
@@ -124,7 +125,7 @@ if __name__ == '__main__':
 
     train = DataLoader(train, batch_size=args.batch, shuffle=True, collate_fn=dataset.collate_fn)
     dev = DataLoader(dev, batch_size=args.batch, shuffle=False, collate_fn=dataset.collate_fn)
-    model.to('cuda')
+    model.to(device)
     save = Saver(model, optimizer, None, args)
     best_score_macro = 0
     best_score_micro = 0
