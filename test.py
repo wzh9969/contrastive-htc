@@ -43,7 +43,7 @@ if __name__ == '__main__':
     test = DataLoader(test, batch_size=batch_size, shuffle=False, collate_fn=dataset.collate_fn)
     model.load_state_dict(checkpoint['param'])
 
-    model.to(args.device)
+    model.to(device)
 
     truth = []
     pred = []
