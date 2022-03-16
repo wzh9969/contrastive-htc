@@ -29,6 +29,7 @@ if __name__ == '__main__':
         hiera.pop(-1)
     value_dict = {i: tokenizer.encode(v.lower(), add_special_tokens=False) for v, i in label_dict.items()}
     torch.save(value_dict, 'bert_value_dict.pt')
+    torch.save(hiera, 'slot.pt')
     data = pd.read_csv('rcv1_v2.csv')
     for i, line in tqdm(data.iterrows()):
         dom = xml.dom.minidom.parseString(line['text'])

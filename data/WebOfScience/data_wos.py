@@ -33,6 +33,7 @@ if __name__ == '__main__':
         hiera[label_ids[-1][0]].add(label_ids[-1][1])
     value_dict = {i: tokenizer.encode(v.lower(), add_special_tokens=False) for v, i in label_dict.items()}
     torch.save(value_dict, 'bert_value_dict.pt')
+    torch.save(hiera, 'slot.pt')
 
     with open('tok.txt', 'w') as f:
         for s in source:
