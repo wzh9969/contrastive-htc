@@ -208,7 +208,7 @@ class GraphLayer(nn.Module):
 
         self.last = last
         if last:
-            self.cross_attn = BartAttention(config.hidden_size, 1, 0.1, True)
+            self.cross_attn = BartAttention(config.hidden_size, 8, 0.1, True)
             self.cross_layer_norm = nn.LayerNorm(config.hidden_size, eps=config.layer_norm_eps)
             self.classifier = nn.Linear(config.hidden_size, config.num_labels)
         self.output_layer = nn.Sequential(nn.Linear(config.hidden_size, config.intermediate_size),
