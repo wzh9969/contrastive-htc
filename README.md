@@ -77,11 +77,13 @@ optional arguments:
 Checkpoints are in `./checkpoints/DATA-NAME`. Two checkpoints are kept based on macro-F1 and micro-F1 respectively 
 (`checkpoint_best_macro.pt`, `checkpoint_best_micro.pt`).
 
-e.g. Train on `WebOfScience` with `batch=12, lambda=0.1, gamma=0.02`. Checkpoints will be in `checkpoints/WebOfScience-test/`.
+e.g. Train on `WebOfScience` with `batch=12, lambda=0.05, gamma=0.02`. Checkpoints will be in `checkpoints/WebOfScience-test/`.
 
 ```shell
-python train.py --name test --batch 12 --data WebOfScience --lambda 0.1 --thre 0.02
+python train.py --name test --batch 12 --data WebOfScience --lambda 0.05 --thre 0.02
 ```
+
+Contrastive learning is sensitive to hyper-parameters. We report results with fixed random seed but we observe higher results with unfixed seed.
 
 ## Test
 
