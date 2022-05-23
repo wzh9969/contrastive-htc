@@ -109,16 +109,20 @@ python test.py --name WebOfScience-test
 
 ## Citation
 
-Please cite our paper.
-
 ```
-@article{wang2022incorporating,
-  title={Incorporating Hierarchy into Text Encoder: a Contrastive Learning Approach for Hierarchical Text Classification},
-  author={Zihan Wang, Peiyi Wang, Lianzhe Huang, Xin Sun, Houfeng Wang},
-  journal={arXiv preprint arXiv:2203.03825},
-  url={https://arxiv.org/abs/2203.03825},
-  year={2022}
+@inproceedings{wang-etal-2022-incorporating,
+    title = "Incorporating Hierarchy into Text Encoder: a Contrastive Learning Approach for Hierarchical Text Classification",
+    author = "Wang, Zihan  and
+      Wang, Peiyi  and
+      Huang, Lianzhe  and
+      Sun, Xin  and
+      Wang, Houfeng",
+    booktitle = "Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+    month = may,
+    year = "2022",
+    address = "Dublin, Ireland",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2022.acl-long.491",
+    pages = "7109--7119",
 }
 ```
-
-The ACL version will soon be available.
