@@ -10,6 +10,9 @@ Text Classification" in ACL 2022.
 * torch >= 1.6.0
 * transformers == 4.2.1
 * fairseq >= 0.10.0
+* torch-geometric == 1.7.2
+* torch-scatter == 2.0.8
+* torch-sparse ==  0.6.12
 
 ## Preprocess
 
