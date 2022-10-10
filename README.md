@@ -21,6 +21,7 @@ Please download the original dataset and then use these scripts.
 ### WebOfScience
 
 The original dataset can be acquired in [the repository of HDLTex](https://github.com/kk7nc/HDLTex). Preprocess code could refer to [the repository of HiAGM](https://github.com/Alibaba-NLP/HiAGM) and we provide a copy of preprocess code here.
+Please save the Excel data file `Data.xlsx` in `WebOfScience/Meta-data` as `Data.txt`.
 
 ```shell
 cd ./data/WebOfScience
