@@ -131,7 +131,7 @@ if __name__ == '__main__':
     best_score_micro = 0
     early_stop_count = 0
     if not os.path.exists(os.path.join('checkpoints', args.name)):
-        os.mkdir(os.path.join('checkpoints', args.name))
+        os.makedirs(os.path.join('checkpoints', args.name))
     log_file = open(os.path.join('checkpoints', args.name, 'log.txt'), 'w')
 
     for epoch in range(1000):
