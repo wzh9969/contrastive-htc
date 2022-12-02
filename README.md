@@ -9,7 +9,7 @@ Text Classification" in ACL 2022.
 * Python >= 3.6
 * torch >= 1.6.0
 * transformers == 4.2.1
-* fairseq >= 0.10.0
+* fairseq >= 0.10.0, <0.11
 * torch-geometric == 1.7.2
 * torch-scatter == 2.0.8
 * torch-sparse ==  0.6.12
@@ -81,10 +81,10 @@ optional arguments:
 Checkpoints are in `./checkpoints/DATA-NAME`. Two checkpoints are kept based on macro-F1 and micro-F1 respectively 
 (`checkpoint_best_macro.pt`, `checkpoint_best_micro.pt`).
 
-e.g. Train on `WebOfScience` with `batch=12, lambda=0.05, gamma=0.02`. Checkpoints will be in `checkpoints/WebOfScience-test/`.
+e.g. Train by CUDA on `WebOfScience` with `batch=12, lambda=0.05, gamma=0.02, seed=3`. Checkpoints will be in `checkpoints/WebOfScience-test/`.
 
 ```shell
-python train.py --name test --batch 12 --data WebOfScience --lambda 0.05 --thre 0.02
+python train.py --name test --batch 12 --data WebOfScience --lamb 0.05 --thre 0.02 --device cuda --seed 3
 ```
 
 ### Reproducibility
