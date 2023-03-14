@@ -1,8 +1,8 @@
 # Incorporating Hierarchy into Text Encoder: a Contrastive Learning Approach for Hierarchical Text Classification
 
 This repository implements a contrastive learning model for hierarchical text classification. This work has been 
-accepted as the long paper "Incorporating Hierarchy into Text Encoder: a Contrastive Learning Approach for Hierarchical 
-Text Classification" in ACL 2022.
+accepted as the long paper ["Incorporating Hierarchy into Text Encoder: a Contrastive Learning Approach for Hierarchical 
+Text Classification"](https://aclanthology.org/2022.acl-long.491/) in ACL 2022.
 
 ## Requirements
 
