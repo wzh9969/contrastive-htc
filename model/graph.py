@@ -144,6 +144,14 @@ class BartAttention(nn.Module):
                 tgt_len,
                 src_len,
             ), f"Attention mask should be of size {(bsz, 1, tgt_len, src_len)}, but is {attention_mask.size()}"
+
+            # There is a potential bug here that the attention mask is set wrongly. In theory, the attention mask
+            # is useless, but $1$ is added wrongly at each position with this implement. Small improvements can be
+            # observed by fixing the bug on all datasets but for reproducibility, we keep the bug here.
+            # Uncomment the following line to fix the bug, but we recommend setting `attention_mask` to `None`
+            # in all cases.
+
+            # attention_mask = (1.0 - attention_mask) * -10000.0
             attn_weights = attn_weights.view(bsz, self.num_heads, tgt_len, src_len) + attention_mask
             attn_weights = attn_weights.view(bsz * self.num_heads, tgt_len, src_len)
 

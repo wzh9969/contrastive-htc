@@ -84,7 +84,7 @@ Checkpoints are in `./checkpoints/DATA-NAME`. Two checkpoints are kept based on 
 e.g. Train on `WebOfScience` with `batch=12, lambda=0.05, gamma=0.02`. Checkpoints will be in `checkpoints/WebOfScience-test/`.
 
 ```shell
-python train.py --name test --batch 12 --data WebOfScience --lambda 0.05 --thre 0.02
+python train.py --name test --batch 12 --data WebOfScience --lamb 0.05 --thre 0.02
 ```
 
 ### Reproducibility
