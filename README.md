@@ -9,7 +9,7 @@ Text Classification"](https://aclanthology.org/2022.acl-long.491/) in ACL 2022.
 * Python >= 3.6
 * torch >= 1.6.0
 * transformers == 4.2.1
-* fairseq >= 0.10.0
+* fairseq == 0.10.0
 * torch-geometric == 1.7.2
 * torch-scatter == 2.0.8
 * torch-sparse ==  0.6.12
